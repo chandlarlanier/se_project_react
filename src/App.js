@@ -2,11 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import ItemModal from './ItemModal/ItemModal';
 
-const App = () => {
+function App() {
   return (
     <div>
       <header className='header'>
-        <ItemModal />
       </header>
     </div>
   );
