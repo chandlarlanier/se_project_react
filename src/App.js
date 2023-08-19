@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import 
+import ItemModal from './ItemModal/ItemModal';
 
-function App() {
+const App = () => {
   return (
     <div>
       <header className='header'>
-
+        <ItemModal />
       </header>
     </div>
   );
