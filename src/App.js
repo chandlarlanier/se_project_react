@@ -6,16 +6,10 @@ function App() {
   return (
     <div>
       <header className='header'>
+        This is a test
       </header>
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
