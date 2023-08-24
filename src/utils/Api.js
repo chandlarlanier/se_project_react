@@ -1,8 +1,5 @@
 const apiKey = '3f71e73ce2cd017bc02bfad723f4d270';
 
-// const latitude = 44.34;
-// const longitude = 10.99;
-
 const latitude = 41;
 const longitude = -74;
 
