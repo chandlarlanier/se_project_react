@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import { getForecastWeather } from './utils/Api';
+import { getForecastWeather, parseWeatherData } from './utils/Api';
 import Header from './Header/Header';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
@@ -28,17 +28,16 @@ const App = () => {
 
   useEffect(() => {
     getForecastWeather().then((data) => {
-      // const temperature = parseWeatherData(data);
-      // setTemp(temperature);
-      console.log(data)
+      const temperature = parseWeatherData(data);
+      setTemp(temperature);
     })
   }, []);
 
   
   return (
     <div>
-      <Header onCreateModal={handleCreateModal}/>
-      <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
+      <Header onCreateModal={handleCreateModal} />
+      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === 'create' && (
         <ModalWithForm title='New Garment' onClose={handleCloseModal}>

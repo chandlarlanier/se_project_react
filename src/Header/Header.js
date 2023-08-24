@@ -9,7 +9,7 @@ const Header = ({ onCreateModal }) => {
         <header className='header'>
         <div className='header__left'>
           <img className='header__logo' src={require('../images/logo.svg').default}/>
-          <div className='header__date'>{currentDate}</div>
+          <div className='header__date'>{currentDate}, New York</div>
         </div>
         <div className='header__right'>
           <button className='header__button' type='text' onClick={onCreateModal}>+ Add clothes</button>
