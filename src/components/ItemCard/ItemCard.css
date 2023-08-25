@@ -1,0 +1,29 @@
+.card {
+    position: relative;
+    width: 325px;
+    height: 328px;
+    cursor: pointer;
+}
+
+.card__name {
+    text-align: center;
+    background-color: white;
+    z-index: 12;
+    position: absolute;
+    top: 20px;
+    left: 138px;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 3px;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'CabinetGrotesk-Bold';
+}
+  
+.card__image {
+    height: 328px;
+    width: 328px;
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    z-index: 1;
+    position: absolute;
+}

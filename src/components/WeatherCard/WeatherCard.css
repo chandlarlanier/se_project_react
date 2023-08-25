@@ -1,21 +1,26 @@
 .weather {
+  max-width: 1360px;
   position: relative;
   height: 80px;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .weather__info {
   position: absolute;
-  top: 18px;
+  top: 20px;
   left: 16px;
   color: white;
   font-size: 36px;
+  line-height: 40px;
   z-index: 3;
+  margin: 0;
+  font-family: 'CabinetGrotesk-Bold';
 }
 
 .weather__image {
   width: 100%;
-  position: relative;
   object-fit: cover;
 }

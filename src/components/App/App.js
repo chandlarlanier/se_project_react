@@ -34,7 +34,8 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className='page'>
+      <div className = 'page__container'>
       <Header onCreateModal={handleCreateModal} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
@@ -68,6 +69,7 @@ const App = () => {
       {activeModal === "preview" && (
         <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
       )}
+      </div>
     </div>
   );
 };

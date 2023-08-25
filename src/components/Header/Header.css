@@ -1,13 +1,13 @@
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     padding: 0 20px;
     font-size: 20px;
-    line-height: 24px;
     margin-top: 30px;
     margin-bottom: 30px;
     font-family: 'CabinetGrotesk-Bold';
+    max-width: 1360px;
   }
   
   .header__left {
@@ -17,8 +17,10 @@
   }
   
   .header__logo {
+    position: relative;
     width: 89px;
     height: 40px;
+    bottom: 3px;
   }
   
   .header__right {
@@ -27,6 +29,15 @@
     align-items: center;
   }
   
+  .header__button {
+    border: none;
+    background-color: white;
+    font-family: 'CabinetGrotesk-Bold';
+    font-size: 20px;
+    cursor: pointer;
+  }
+
   .header__avatar {
-  
+    height: 40px;
+    width: 40px;
   }

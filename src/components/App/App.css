@@ -14,31 +14,14 @@
   width: 100%;
 } */
 
-.main {
-  padding: 0 20px;
-  font-family: 'CabinetGrotesk-Bold';
-}
-
-.card__section {
-  margin-top: 20px;
-}
-
-.card__name {
-  text-align: center;
-}
-
-.card__image {
-  width: 328px;
-  height: 328px;
-  border-radius: 10px;
-}
-
-.card__items {
+.page {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
-  margin-top: 20px;
+}
+
+.page__container {
+  max-width: 1400px;
 }
 
 .footer {
