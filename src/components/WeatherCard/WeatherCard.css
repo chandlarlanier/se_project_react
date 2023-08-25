@@ -1,1 +1,21 @@
+.weather {
+  position: relative;
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+}
 
+.weather__info {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  color: white;
+  font-size: 36px;
+  z-index: 3;
+}
+
+.weather__image {
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+}

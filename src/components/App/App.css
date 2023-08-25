@@ -1,4 +1,4 @@
-.weather {
+/* .weather {
   position: relative;
 }
 
@@ -12,10 +12,11 @@
 
 .weather__image {
   width: 100%;
-}
+} */
 
 .main {
   padding: 0 20px;
+  font-family: 'CabinetGrotesk-Bold';
 }
 
 .card__section {
