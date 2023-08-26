@@ -14,9 +14,7 @@ const ItemModal = ({ selectedCard, onClose }) => {
           alt="Clothing item"
         />
         <p className="modal__item-name">{selectedCard.name}</p>
-        <p className="modal__item-weather">
-          Weather: {selectedCard.weather}
-        </p>
+        <p className="modal__item-weather">Weather: {selectedCard.weather}</p>
       </div>
     </div>
   );

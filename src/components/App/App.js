@@ -34,45 +34,65 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   }, []);
 
   return (
-    <div className='page'>
-      <div className = 'page__container'>
-      <Header onCreateModal={handleCreateModal} />
-      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
-      <Footer />
-      {activeModal === "create" && (
-        <ModalWithForm title="New garment" onClose={handleCloseModal} name='add-clothing-item'>
-          <label className='modal__input-label'>
-            Name
-            <input className='modal__text-input' type="text" name="name" minLength="1" maxLength="30" placeholder='Name'/>
-          </label>
-          <label className='modal__input-label'>
-            Image
-            <input className='modal__text-input' type="url" name="link" minLength="1" maxLength="30" placeholder='Image URL'/>
-          </label>
-          <p className='modal__radio-button-heading'>Select the weather type:</p>
-          <div className='modal__radio-button-section'>
-            <div className='modal__radio-button'>
-              <input type="radio" id="hot" value="hot" />
-              <label>Hot</label>
+    <div className="page">
+      <div className="page__container">
+        <Header onCreateModal={handleCreateModal} />
+        <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+        <Footer />
+        {activeModal === "create" && (
+          <ModalWithForm
+            title="New garment"
+            onClose={handleCloseModal}
+            name="add-clothing-item"
+          >
+            <label className="modal__input-label">
+              Name
+              <input
+                className="modal__text-input"
+                type="text"
+                name="name"
+                minLength="1"
+                maxLength="30"
+                placeholder="Name"
+              />
+            </label>
+            <label className="modal__input-label">
+              Image
+              <input
+                className="modal__text-input"
+                type="url"
+                name="link"
+                minLength="1"
+                maxLength="30"
+                placeholder="Image URL"
+              />
+            </label>
+            <p className="modal__radio-button-heading">
+              Select the weather type:
+            </p>
+            <div className="modal__radio-button-section">
+              <div className="modal__radio-button">
+                <input type="radio" id="hot" value="hot" />
+                <label>Hot</label>
+              </div>
+              <div className="modal__radio-button">
+                <input type="radio" id="warm" value="warm" />
+                <label>Warm</label>
+              </div>
+              <div className="modal__radio-button">
+                <input type="radio" id="cold" value="cold" />
+                <label>Cold</label>
+              </div>
             </div>
-            <div className='modal__radio-button'>
-              <input type="radio" id="warm" value="warm" />
-              <label>Warm</label>
-            </div>
-            <div className='modal__radio-button'>
-              <input type="radio" id="cold" value="cold" />
-              <label>Cold</label>
-            </div>
-          </div>
-        </ModalWithForm>
-      )}
-      {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-      )}
+          </ModalWithForm>
+        )}
+        {activeModal === "preview" && (
+          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        )}
       </div>
     </div>
   );
