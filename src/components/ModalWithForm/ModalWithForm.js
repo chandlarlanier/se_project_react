@@ -1,4 +1,5 @@
 import './ModalWithForm.css';
+import grayCloseIcon from '../../images/close-icon-gray.svg'
 
 const ModalWithForm = ({
     children,
@@ -11,7 +12,7 @@ const ModalWithForm = ({
         <div className={`modal modal_type_${name}`}>
             <div className='modal__content'>
                 <button className='modal__close-button_gray' type='button' onClick={onClose}>
-                    <img src={require('../../images/close-icon-gray.svg').default} />
+                    <img src={grayCloseIcon} />
                 </button>
                 <h3 className='modal__title'>{title}</h3>
                 <form className='modal__form'>{children}</form>
