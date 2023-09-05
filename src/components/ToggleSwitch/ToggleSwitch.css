@@ -33,19 +33,21 @@
 
 .switch__temp-F {
     position: absolute;
-    top: -7px;
-    left: 38px;
+    top: -9px;
+    left: 39px;
     color: white;
 }
 
 .switch__temp-C {
     position: absolute;
-    top: -7px;
+    top: -9px;
     left: 14px;
     color: white;
 }
 
 .switch__active {
+    top: -7px;
     font-size: 16px;
     color: white;
+    cursor: pointer;
 }
