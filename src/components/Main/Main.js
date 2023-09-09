@@ -10,11 +10,12 @@ const Main = ({ weatherTemp, onSelectCard }) => {
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
   const weatherType = useMemo(() => {
-    if (weatherTemp.temperature >= 86) {
+    const weatherTempInteger = parseInt(weatherTemp.temperature.F);
+    if (weatherTempInteger >= 86) {
       return "hot";
-    } else if (weatherTemp.temperature >= 66 && weatherTemp.temperature <= 85) {
+    } else if (weatherTempInteger >= 66 && weatherTempInteger <= 85) {
       return "warm";
-    } else if (weatherTemp.temperature <= 65) {
+    } else if (weatherTempInteger <= 65) {
       return "cold";
     }
   }, [weatherTemp]);

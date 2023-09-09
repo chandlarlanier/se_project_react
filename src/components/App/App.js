@@ -25,8 +25,8 @@ const App = () => {
     setActiveModal("");
   };
 
-  const onAddItem = (values) => {
-    // e.preventDefault();
+  const onAddItem = (e, values) => {
+    e.preventDefault();
     console.log(values);
   }
 
