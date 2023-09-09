@@ -37,6 +37,11 @@
     cursor: pointer;
   }
 
+  .header__name {
+    text-decoration: none;
+    color: black;
+  }
+
   .header__avatar {
     height: 40px;
     width: 40px;
