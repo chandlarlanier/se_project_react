@@ -4,6 +4,7 @@ import "./App.css";
 import { getForecastWeather, parseWeatherData } from "../../utils/Api";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
@@ -62,7 +63,9 @@ const App = () => {
             <Route exact path="/">
               <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
             </Route>
-            <Route path="/profile">Profile</Route>
+            <Route path="/profile">Profile
+              <Profile onSelectCard={handleSelectedCard}/>
+            </Route>
           </Switch>
           <Footer />
           {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} onAddItem={onAddItem} isOpen={activeModal === 'create'}/>}
