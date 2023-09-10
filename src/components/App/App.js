@@ -63,8 +63,8 @@ const App = () => {
             <Route exact path="/">
               <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
             </Route>
-            <Route path="/profile">Profile
-              <Profile onSelectCard={handleSelectedCard}/>
+            <Route path="/profile">
+              <Profile onSelectCard={handleSelectedCard} onCreateModal={handleCreateModal}/>
             </Route>
           </Switch>
           <Footer />
