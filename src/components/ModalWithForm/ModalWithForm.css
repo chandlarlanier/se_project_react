@@ -1,80 +1,93 @@
 .modal {
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal__title {
-    margin-left: 30px;
-    margin-top: 40px;
-    font-size: 16px;
+  margin-left: 30px;
+  margin-top: 40px;
+  font-size: 16px;
 }
 
 .modal__content {
-    background-color: white;
-    max-width: 496px;
-    width: 100%;
-    border-radius: 20px;
-    padding: 34px 36px;
-    position: relative;
+  background-color: white;
+  max-width: 496px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 34px 36px;
+  position: relative;
 }
 
 .modal__close-button_gray {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    left: 450px;
-    top: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  left: 450px;
+  top: 10px;
 }
 
 .modal__input-label {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid black;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 30px;
-    font-size: 16px;
-    line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 30px;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__text-input {
-    border: none;
-    font-size: 16px;
-    padding: 10px 0;
+  border: none;
+  font-size: 16px;
+  padding: 10px 0;
 }
 
 .modal__radio-button-heading {
-    margin-top: 30px;
-    margin-left: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
 .modal__radio-button-section {
-    margin-left: 30px;
-    margin-top: 10px;
+  margin-left: 30px;
+  margin-top: 10px;
 }
 
 .modal__radio-button {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .modal__submit-button {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    border: none;
-    border-radius: 2px;
-    width: 124px;
-    height: 36px;
-    font-size: 16px;
-    font-family: 'CabinetGrotesk-Bold';
-    margin-top: 30px;
-    margin-left: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  width: 124px;
+  height: 36px;
+  font-size: 16px;
+  font-family: "CabinetGrotesk-Bold";
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.modal__submit-button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__submit-button:disabled {
+    cursor: default;
+}
+
+.modal__submit-button:enabled {
+    background-color: black;
+    cursor: pointer;
 }
