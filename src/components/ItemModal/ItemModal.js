@@ -13,8 +13,11 @@ const ItemModal = ({ selectedCard, onClose }) => {
           className="modal__img"
           alt="Clothing item"
         />
-        <p className="modal__item-name">{selectedCard.name}</p>
-        <p className="modal__item-weather">Weather: {selectedCard.weather}</p>
+        <div className="modal__item-info">
+          <p className="modal__item-name">{selectedCard.name}</p>
+          <p className="modal__item-weather">Weather: {selectedCard.weather}</p>
+          <button className="modal__delete-button">Delete item</button>
+        </div>
       </div>
     </div>
   );
