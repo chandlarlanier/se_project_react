@@ -5,7 +5,7 @@ const ItemCard = ({ item, onSelectCard }) => {
     <div className="card">
       <p className="card__name">{item.name}</p>
       <img
-        src={item.link}
+        src={item.imageUrl}
         className="card__image"
         alt={item.name}
         onClick={() => {

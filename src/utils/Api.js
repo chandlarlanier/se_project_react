@@ -30,8 +30,8 @@ export const parseWeatherData = (data) => {
 
 const baseUrl = 'http://localhost:3001';
 
-export const getItems = () => {
-  return fetch(`${baseUrl}/items`, {
+export const getClothingItems = () => {
+  const clothingItems = fetch(`${baseUrl}/items`, {
     method: 'GET',
     headers: {
       'content-type': 'application/json'
@@ -43,5 +43,6 @@ export const getItems = () => {
     } else {
       return Promise.reject(`Error: ${res.status}`);
     }
-  })
+  });
+  return clothingItems;
 }

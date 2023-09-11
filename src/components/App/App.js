@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
-import { getForecastWeather, parseWeatherData, getItems } from "../../utils/Api";
+import { getForecastWeather, parseWeatherData, getClothingItems } from "../../utils/Api";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
@@ -12,17 +12,18 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 const App = () => {
-  getItems()
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+  // getItems()
+  // .then((res) => {
+  //   console.log(res);
+  // })
+  // .catch((err) => {
+  //   console.error(err);
+  // });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -32,8 +33,7 @@ const App = () => {
     setActiveModal("");
   };
 
-  const onAddItem = (e, values) => {
-    e.preventDefault();
+  const onAddItem = (values) => {
     console.log(values);
   }
 
@@ -58,6 +58,14 @@ const App = () => {
       });
   }, []);
 
+  useEffect(() => {
+    getClothingItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <div className="page">
       <div className="page__container">
@@ -67,10 +75,10 @@ const App = () => {
           <Header onCreateModal={handleCreateModal} />
           <Switch>
             <Route exact path="/">
-              <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+              <Main weatherTemp={temp} onSelectCard={handleSelectedCard} clothingItems={clothingItems}/>
             </Route>
             <Route path="/profile">
-              <Profile onSelectCard={handleSelectedCard} onCreateModal={handleCreateModal}/>
+              <Profile onSelectCard={handleSelectedCard} onCreateModal={handleCreateModal} clothingItems={clothingItems}/>
             </Route>
           </Switch>
           <Footer />
