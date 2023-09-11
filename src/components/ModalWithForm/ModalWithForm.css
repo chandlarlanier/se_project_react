@@ -67,7 +67,7 @@
 }
 
 .modal__submit-button {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: black;
   color: white;
   border: none;
   border-radius: 2px;
@@ -79,15 +79,12 @@
   margin-left: 30px;
 }
 
-.modal__submit-button:hover {
+.modal__submit-button:enabled:hover {
   background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
 }
 
 .modal__submit-button:disabled {
+    background-color: rgba(0, 0, 0, 0.3);
     cursor: default;
-}
-
-.modal__submit-button:enabled {
-    background-color: black;
-    cursor: pointer;
 }

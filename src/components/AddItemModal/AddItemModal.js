@@ -4,19 +4,22 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
-    console.log(e);
     setName(e.target.value);
   };
 
   const [link, setUrl] = useState("");
   const handleUrlChange = (e) => {
-    console.log(e);
     setUrl(e.target.value);
   };
 
+  const [weather, setWeather] = useState("");
+  const handleWeatherChange = (e) => {
+    setWeather(e.target.value);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link });
+    onAddItem({ name, link, weather });
   };
 
   return (
@@ -56,17 +59,17 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
         />
       </label>
       <p className="modal__radio-button-heading">Select the weather type:</p>
-      <div className="modal__radio-button-section">
+      <div className="modal__radio-button-section" onChange={handleWeatherChange}>
         <div className="modal__radio-button">
-          <input type="radio" id="hot" value="hot" />
+          <input type="radio" id="hot" value="hot" name='weather' required/>
           <label>Hot</label>
         </div>
         <div className="modal__radio-button">
-          <input type="radio" id="warm" value="warm" />
+          <input type="radio" id="warm" value="warm" name='weather' required/>
           <label>Warm</label>
         </div>
         <div className="modal__radio-button">
-          <input type="radio" id="cold" value="cold" />
+          <input type="radio" id="cold" value="cold" name='weather' required/>
           <label>Cold</label>
         </div>
       </div>
