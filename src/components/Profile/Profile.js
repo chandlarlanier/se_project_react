@@ -1,4 +1,4 @@
-// import { defaultClothingItems } from "../../utils/constants";
+import SideBar from "../SideBar/SideBar";
 import ItemCard from "../ItemCard/ItemCard";
 import avatar from "../../images/avatar.svg";
 import './Profile.css';
@@ -6,10 +6,7 @@ import './Profile.css';
 const Profile = ({ onSelectCard, onCreateModal, clothingItems }) => {
   return (
     <div className="profile__container">
-      <div className="profile__side-bar">
-        <img className="profile__avatar" src={avatar} alt="User avatar" />
-        <div className='profile__name'>Terrence Tegegne</div>
-      </div>
+      <SideBar />
       <div className='profile__main'>
         <div className='profile__header'>
         <h2 className='profile__items-heading'>Your Items</h2>
