@@ -1,0 +1,73 @@
+/* <div className="modal">
+      <div className="modal__content">
+        <button type="button" onClick={onClose} className="modal__close-button">
+          <img src={closeIcon} alt="Close icon" />
+        </button>
+        <p className="modal__warning">
+          Are you sure you want to delete this item? This action is
+          irreversible.
+        </p>
+        <button className="modal__delete-button">Yes, delete item</button>
+        <button className="modal__cancel-button">Cancel</button>
+      </div>
+    </div> */
+
+.confirm-delete__modal {
+    position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.confirm-delete__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 670px;
+    height: 280px;
+    background-color: white;
+    position: relative;
+    border-radius: 20px;
+}
+
+.confirm-delete__close-button {
+    position: absolute;
+    left: 620px;
+    top: 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.confirm-delete__warning {
+    width: 367px;
+    text-align: center;
+    font-family: 'CabinetGrotesk-Bold';
+    margin-top: 60px;
+    font-size: 20px;
+}
+
+.confirm-delete__delete-button {
+    font-family: 'CabinetGrotesk-Bold';
+    border: none;
+    color: red;
+    background-color: transparent;
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.confirm-delete__cancel-button {
+    font-family: 'CabinetGrotesk-Bold';
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+    margin-top: 20px;
+    cursor: pointer;
+}

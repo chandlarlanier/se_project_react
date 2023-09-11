@@ -1,18 +1,29 @@
-.modal {
-    padding: 0;
+.preview-item__modal {
     font-family: 'CabinetGrotesk-Bold';
     font-size: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.modal__content {
+.preview-item__content {
     height: 610px;
     width: 498px;
     overflow: hidden;
     position: relative;
-    padding: 0;
+    margin: 50px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 20px;
 }
 
-.modal__close-button {
+.preview-item__close-button {
     background-color: transparent;
     border: none;
     position: absolute;
@@ -22,27 +33,27 @@
     cursor: pointer;
 }
 
-.modal__img {
+.preview-item__img {
     width: 498px;
     height: 498px;
 }
 
-.modal__item-info {
+.preview-item__item-info {
     position: relative;
 }
 
-.modal__item-name {
+.preview-item__item-name {
     margin-top: 10px;
     margin-left: 15px;
     font-size: 20px;
 }
 
-.modal__item-weather {
+.preview-item__item-weather {
     margin-left: 15px;
     margin-top: 10px;
 }
 
-.modal__delete-button {
+.preview-item__delete-button {
     color: red;
     position: absolute;
     top: 0;

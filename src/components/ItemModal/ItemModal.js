@@ -1,22 +1,22 @@
 import "./ItemModal.css";
 import closeIcon from "../../images/close-icon.svg";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, onDelete }) => {
   return (
-    <div className="modal">
-      <div className="modal__content">
-        <button type="button" onClick={onClose} className="modal__close-button">
+    <div className="preview-item__modal">
+      <div className="preview-item__content">
+        <button type="button" onClick={onClose} className="preview-item__close-button">
           <img src={closeIcon} alt="Close icon" />
         </button>
         <img
           src={selectedCard.imageUrl}
-          className="modal__img"
+          className="preview-item__img"
           alt="Clothing item"
         />
-        <div className="modal__item-info">
-          <p className="modal__item-name">{selectedCard.name}</p>
-          <p className="modal__item-weather">Weather: {selectedCard.weather}</p>
-          <button className="modal__delete-button">Delete item</button>
+        <div className="preview-item__item-info">
+          <p className="preview-item__item-name">{selectedCard.name}</p>
+          <p className="preview-item__item-weather">Weather: {selectedCard.weather}</p>
+          <button className="preview-item__delete-button" onClick={onDelete}>Delete item</button>
         </div>
       </div>
     </div>

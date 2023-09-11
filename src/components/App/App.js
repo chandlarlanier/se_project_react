@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 const App = () => {
@@ -45,6 +46,10 @@ const App = () => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
+  const handleDeleteModal = () => {
+    setActiveModal('delete');
+  }
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -88,9 +93,8 @@ const App = () => {
           </Switch>
           <Footer />
           {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} onAddItem={onAddItem} isOpen={activeModal === 'create'}/>}
-          {activeModal === "preview" && (
-            <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-          )}
+          {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} onDelete={handleDeleteModal}/>}
+          {activeModal === 'delete' && <ConfirmDeleteModal onClose={handleCloseModal}/>}
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </div>

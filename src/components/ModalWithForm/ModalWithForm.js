@@ -11,19 +11,19 @@ const ModalWithForm = ({
   onSubmit
 }) => {
   return (
-    <div className={`modal modal_type_${name}`}>
-      <div className="modal__content">
+    <div className='form__modal'>
+      <div className="form__content">
         <button
-          className="modal__close-button_gray"
+          className="form__close-button_gray"
           type="button"
           onClick={onClose}
         >
           <img src={grayCloseIcon} alt="Close icon" />
         </button>
-        <h3 className="modal__title">{title}</h3>
-        <form onSubmit={onSubmit} className="modal__form">
+        <h3 className="form__title">{title}</h3>
+        <form onSubmit={onSubmit} className="form__children">
           {children}
-          <button className="modal__submit-button" type="submit">
+          <button className="form__submit-button" type="submit">
             {buttonText}
           </button>
         </form>

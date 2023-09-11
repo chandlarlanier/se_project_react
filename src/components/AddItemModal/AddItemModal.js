@@ -15,7 +15,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [weather, setWeather] = useState("");
   const handleWeatherChange = (e) => {
     setWeather(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,11 +30,11 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label className="modal__input-label">
+      <label className="form__input-label">
         Name
         <input
           required
-          className="modal__text-input"
+          className="form__text-input"
           type="text"
           name="name"
           minLength="1"
@@ -44,11 +44,11 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           onChange={handleNameChange}
         />
       </label>
-      <label className="modal__input-label">
+      <label className="form__input-label">
         Image
         <input
           required
-          className="modal__text-input"
+          className="form__text-input"
           type="url"
           name="link"
           minLength="1"
@@ -58,18 +58,21 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           onChange={handleUrlChange}
         />
       </label>
-      <p className="modal__radio-button-heading">Select the weather type:</p>
-      <div className="modal__radio-button-section" onChange={handleWeatherChange}>
-        <div className="modal__radio-button">
-          <input type="radio" id="hot" value="hot" name='weather' required/>
+      <p className="form__radio-button-heading">Select the weather type:</p>
+      <div
+        className="form__radio-button-section"
+        onChange={handleWeatherChange}
+      >
+        <div className="form__radio-button">
+          <input type="radio" id="hot" value="hot" name="weather" required />
           <label>Hot</label>
         </div>
-        <div className="modal__radio-button">
-          <input type="radio" id="warm" value="warm" name='weather' required/>
+        <div className="form__radio-button">
+          <input type="radio" id="warm" value="warm" name="weather" required />
           <label>Warm</label>
         </div>
-        <div className="modal__radio-button">
-          <input type="radio" id="cold" value="cold" name='weather' required/>
+        <div className="form__radio-button">
+          <input type="radio" id="cold" value="cold" name="weather" required />
           <label>Cold</label>
         </div>
       </div>
