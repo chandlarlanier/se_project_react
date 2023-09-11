@@ -2,11 +2,16 @@
   display: flex;
   position: relative;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.switch:hover {
+  color: black;
 }
 
 .switch__box {
   border-radius: 20px;
-  border: 2px solid #7e7e7e;
+  border: 2px solid rgba(0, 0, 0, 0.5);
   width: 55px;
   height: 30px;
   appearance: none;
@@ -36,25 +41,28 @@
 
 .switch__slider-C {
   left: 4px;
+  color: inherit;
 }
 
 .switch__temp-F {
+  font-size: 15px;
   position: absolute;
-  top: -9px;
+  top: -6px;
   left: 40px;
-  color: white;
+  color: inherit;
 }
 
 .switch__temp-C {
+  font-size: 15px;
   position: absolute;
-  top: -9px;
+  top: -6px;
   left: 13px;
-  color: white;
+  color: inherit;
 }
 
 .switch__active {
-  top: -7px;
-  font-size: 16px;
+  top: -6px;
+  font-size: 15px;
   color: white;
   cursor: pointer;
 }
