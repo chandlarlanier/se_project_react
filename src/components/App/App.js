@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
-import { getForecastWeather, parseWeatherData, getClothingItems, addClothingItem } from "../../utils/Api";
+import {
+  getForecastWeather,
+  parseWeatherData,
+  getClothingItems,
+  addClothingItem,
+  deleteClothingItem,
+} from "../../utils/Api";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+// import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
@@ -31,7 +37,7 @@ const App = () => {
     const newItem = {
       name: values.name,
       imageUrl: values.link,
-      weather: values.weather
+      weather: values.weather,
     };
 
     addClothingItem(newItem)
@@ -40,7 +46,7 @@ const App = () => {
         handleCloseModal();
       })
       .catch(console.error);
-  }
+  };
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -48,8 +54,21 @@ const App = () => {
   };
 
   const handleDeleteModal = () => {
-    setActiveModal('delete');
-  }
+    setActiveModal("delete");
+  };
+
+  const handleConfirmDelete = () => {
+    console.log(selectedCard);
+    deleteClothingItem(selectedCard._id)
+    .then(() => {
+      const remainingClothingItems = clothingItems.filter((card) => {
+        return selectedCard._id !== card._id;
+      });
+      setClothingItems(remainingClothingItems);
+      handleCloseModal();
+    })
+    .catch(console.error);
+  };
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -85,16 +104,41 @@ const App = () => {
           <Header onCreateModal={handleCreateModal} />
           <Switch>
             <Route exact path="/">
-              <Main weatherTemp={temp} onSelectCard={handleSelectedCard} clothingItems={clothingItems}/>
+              <Main
+                weatherTemp={temp}
+                onSelectCard={handleSelectedCard}
+                clothingItems={clothingItems}
+              />
             </Route>
             <Route path="/profile">
-              <Profile onSelectCard={handleSelectedCard} onCreateModal={handleCreateModal} clothingItems={clothingItems}/>
+              <Profile
+                onSelectCard={handleSelectedCard}
+                onCreateModal={handleCreateModal}
+                clothingItems={clothingItems}
+              />
             </Route>
           </Switch>
           <Footer />
-          {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} onAddItem={onAddItem} isOpen={activeModal === 'create'}/>}
-          {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} onDelete={handleDeleteModal}/>}
-          {activeModal === 'delete' && <ConfirmDeleteModal onClose={handleCloseModal}/>}
+          {activeModal === "create" && (
+            <AddItemModal
+              handleCloseModal={handleCloseModal}
+              onAddItem={onAddItem}
+              isOpen={activeModal === "create"}
+            />
+          )}
+          {activeModal === "preview" && (
+            <ItemModal
+              selectedCard={selectedCard}
+              onClose={handleCloseModal}
+              onDelete={handleDeleteModal}
+            />
+          )}
+          {activeModal === "delete" && (
+            <ConfirmDeleteModal
+              onClose={handleCloseModal}
+              onConfirmDelete={handleConfirmDelete}
+            />
+          )}
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </div>

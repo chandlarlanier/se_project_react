@@ -64,3 +64,20 @@ export const addClothingItem = (data) => {
   })
   return newClothingItem;
 }
+
+export const deleteClothingItem = (cardId) => {
+  const deletedClothingItem = fetch(`${baseUrl}/items/${cardId}`, {
+    method: "DELETE",
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+  })
+  return deletedClothingItem;
+}
