@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
-import { getForecastWeather, parseWeatherData, getClothingItems } from "../../utils/Api";
+import { getForecastWeather, parseWeatherData, getClothingItems, addClothingItem } from "../../utils/Api";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
@@ -12,13 +12,6 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 const App = () => {
-  // getItems()
-  // .then((res) => {
-  //   console.log(res);
-  // })
-  // .catch((err) => {
-  //   console.error(err);
-  // });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -34,7 +27,18 @@ const App = () => {
   };
 
   const onAddItem = (values) => {
-    console.log(values);
+    const newItem = {
+      name: values.name,
+      imageUrl: values.link,
+      weather: values.weather
+    };
+
+    addClothingItem(newItem)
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch(console.error);
   }
 
   const handleSelectedCard = (card) => {
@@ -61,6 +65,7 @@ const App = () => {
   useEffect(() => {
     getClothingItems()
       .then((items) => {
+        console.log(items);
         setClothingItems(items);
       })
       .catch(console.error);
