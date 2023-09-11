@@ -8,10 +8,10 @@ const ModalWithForm = ({
   onClose,
   name,
   isOpen,
-  onSubmit
+  onSubmit,
 }) => {
   return (
-    <div className='form__modal'>
+    <div className="form__modal">
       <div className="form__content">
         <button
           className="form__close-button_gray"

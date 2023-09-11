@@ -1,67 +1,67 @@
 .preview-item__modal {
-    font-family: 'CabinetGrotesk-Bold';
-    font-size: 20px;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .preview-item__content {
-    height: 610px;
-    width: 498px;
-    overflow: hidden;
-    position: relative;
-    margin: 50px;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 20px;
+  height: 610px;
+  width: 498px;
+  overflow: hidden;
+  position: relative;
+  margin: 50px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 20px;
 }
 
 .preview-item__close-button {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    left: 450px;
-    top: 15px;
-    z-index: 101;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  left: 450px;
+  top: 15px;
+  z-index: 101;
+  cursor: pointer;
 }
 
 .preview-item__img {
-    width: 498px;
-    height: 498px;
+  width: 498px;
+  height: 498px;
 }
 
 .preview-item__item-info {
-    position: relative;
+  position: relative;
 }
 
 .preview-item__item-name {
-    margin-top: 10px;
-    margin-left: 15px;
-    font-size: 20px;
+  margin-top: 10px;
+  margin-left: 15px;
+  font-size: 20px;
 }
 
 .preview-item__item-weather {
-    margin-left: 15px;
-    margin-top: 10px;
+  margin-left: 15px;
+  margin-top: 10px;
 }
 
 .preview-item__delete-button {
-    color: red;
-    position: absolute;
-    top: 0;
-    left: 372px;
-    font-size: 20px;
-    border: none;
-    background-color: transparent;
-    white-space: nowrap;
-    cursor: pointer;
-    font-family: 'CabinetGrotesk-Bold';
+  color: red;
+  position: absolute;
+  top: 0;
+  left: 372px;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: "CabinetGrotesk-Bold";
 }

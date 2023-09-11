@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
+import { getForecastWeather, parseWeatherData } from "../../utils/WeatherApi";
 import {
-  getForecastWeather,
-  parseWeatherData,
   getClothingItems,
   addClothingItem,
   deleteClothingItem,
@@ -12,7 +11,6 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-// import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
@@ -58,16 +56,15 @@ const App = () => {
   };
 
   const handleConfirmDelete = () => {
-    console.log(selectedCard);
     deleteClothingItem(selectedCard._id)
-    .then(() => {
-      const remainingClothingItems = clothingItems.filter((card) => {
-        return selectedCard._id !== card._id;
-      });
-      setClothingItems(remainingClothingItems);
-      handleCloseModal();
-    })
-    .catch(console.error);
+      .then(() => {
+        const remainingClothingItems = clothingItems.filter((card) => {
+          return selectedCard._id !== card._id;
+        });
+        setClothingItems(remainingClothingItems);
+        handleCloseModal();
+      })
+      .catch(console.error);
   };
 
   const handleToggleSwitchChange = () => {
@@ -89,7 +86,6 @@ const App = () => {
   useEffect(() => {
     getClothingItems()
       .then((items) => {
-        console.log(items);
         setClothingItems(items);
       })
       .catch(console.error);

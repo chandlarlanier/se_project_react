@@ -1,55 +1,51 @@
 .profile__container {
-    display: flex;
-    font-family: 'CabinetGrotesk-Bold';
-    max-width: 1400px;
-    padding-left: 20px;
-    gap: 40px;
-    margin-top: 40px;
+  display: flex;
+  font-family: "CabinetGrotesk-Bold";
+  max-width: 1400px;
+  padding-left: 20px;
+  gap: 40px;
+  margin-top: 40px;
 }
 
 .profile__side-bar {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .profile__avatar {
-    height: 56px;
-    width: 56px;
+  height: 56px;
+  width: 56px;
 }
 
 .profile__name {
-    font-size: 20px;
-    white-space: nowrap;
-    margin-top: 15px;
-}
-
-.profile__main {
-
+  font-size: 20px;
+  white-space: nowrap;
+  margin-top: 15px;
 }
 
 .profile__header {
-    display: flex;
-    gap: 20px;
-    margin-left: 50px;
+  display: flex;
+  gap: 20px;
+  margin-left: 50px;
 }
 
 .profile__items-heading {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .profile__add-button {
-    color: rgba(0, 0, 0, 0.6);
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 20px;
-    font-family: "CabinetGrotesk-Bold";
+  color: rgba(0, 0, 0, 0.6);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: "CabinetGrotesk-Bold";
 }
 
 .profile__card-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }

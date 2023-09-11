@@ -15,7 +15,7 @@
   margin-left: 25px;
   margin-top: 25px;
   font-size: 16px;
-  font-family: 'CabinetGrotesk-Bold';
+  font-family: "CabinetGrotesk-Bold";
 }
 
 .form__content {
@@ -44,7 +44,7 @@
   margin-top: 20px;
   font-size: 16px;
   line-height: 20px;
-  font-family: 'CabinetGrotesk-Bold';
+  font-family: "CabinetGrotesk-Bold";
 }
 
 .form__text-input {
@@ -56,13 +56,13 @@
 .form__radio-button-heading {
   margin-top: 20px;
   margin-left: 25px;
-  font-family: 'CabinetGrotesk-Bold';
+  font-family: "CabinetGrotesk-Bold";
 }
 
 .form__radio-button-section {
   margin-left: 20px;
   margin-top: 10px;
-  font-family: 'CabinetGrotesk-Bold';
+  font-family: "CabinetGrotesk-Bold";
 }
 
 .form__radio-button {
@@ -88,6 +88,6 @@
 }
 
 .form__submit-button:disabled {
-    background-color: rgba(0, 0, 0, 0.3);
-    cursor: default;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: default;
 }

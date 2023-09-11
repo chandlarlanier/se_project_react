@@ -1,48 +1,48 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    font-size: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-family: 'CabinetGrotesk-Bold';
-    max-width: 1360px;
-  }
-  
-  .header__left {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  
-  .header__logo {
-    position: relative;
-    width: 89px;
-    height: 40px;
-    bottom: 3px;
-  }
-  
-  .header__right {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  
-  .header__button {
-    border: none;
-    background-color: white;
-    font-family: 'CabinetGrotesk-Bold';
-    font-size: 20px;
-    cursor: pointer;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-family: "CabinetGrotesk-Bold";
+  max-width: 1360px;
+}
 
-  .header__name {
-    text-decoration: none;
-    color: black;
-  }
+.header__left {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
 
-  .header__avatar {
-    height: 40px;
-    width: 40px;
-  }
+.header__logo {
+  position: relative;
+  width: 89px;
+  height: 40px;
+  bottom: 3px;
+}
+
+.header__right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__button {
+  border: none;
+  background-color: white;
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.header__name {
+  text-decoration: none;
+  color: black;
+}
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+}
