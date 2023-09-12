@@ -64,16 +64,34 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
         onChange={handleWeatherChange}
       >
         <div className="form__radio-button">
-          <input type="radio" id="hot" value="hot" name="weather" required />
-          <label>Hot</label>
+          <label>
+            <input type="radio" id="hot" value="hot" name="weather" required />
+            Hot
+          </label>
         </div>
         <div className="form__radio-button">
-          <input type="radio" id="warm" value="warm" name="weather" required />
-          <label>Warm</label>
+          <label>
+            <input
+              type="radio"
+              id="warm"
+              value="warm"
+              name="weather"
+              required
+            />
+            Warm
+          </label>
         </div>
         <div className="form__radio-button">
-          <input type="radio" id="cold" value="cold" name="weather" required />
-          <label>Cold</label>
+          <label>
+            <input
+              type="radio"
+              id="cold"
+              value="cold"
+              name="weather"
+              required
+            />
+            Cold
+          </label>
         </div>
       </div>
     </ModalWithForm>
