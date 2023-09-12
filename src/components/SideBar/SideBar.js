@@ -4,7 +4,7 @@ const SideBar = () => {
   return (
     <div className="profile__side-bar">
       <img className="profile__avatar" src={avatar} alt="User avatar" />
-      <div className="profile__name">Terrence Tegegne</div>
+      <p className="profile__name">Terrence Tegegne</p>
     </div>
   );
 };
