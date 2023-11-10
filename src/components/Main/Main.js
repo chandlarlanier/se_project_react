@@ -3,6 +3,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./Main.css";
+import LoginModal from "../LoginModal/LoginModal";
 
 const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
@@ -25,6 +26,7 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
 
   return (
     <main className="main">
+      <LoginModal/>
       <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
       <section className="card-section">
         The temperature today is {temp} / You may want to wear:
