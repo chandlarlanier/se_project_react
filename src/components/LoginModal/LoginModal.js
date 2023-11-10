@@ -1,9 +1,8 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./LoginModal.css";
 
-const LoginModal = ({handleCloseModal}) => {
+const LoginModal = ({handleCloseModal, orButton, orButtonText}) => {
   return (
-    <ModalWithForm title="Log in" buttonText="Log in" onClose={handleCloseModal}>
+    <ModalWithForm title="Log in" buttonText="Log in" onClose={handleCloseModal} orButton={orButton} orButtonText={orButtonText}>
       <label className="form__input-label">
         Email
         <input
@@ -24,7 +23,6 @@ const LoginModal = ({handleCloseModal}) => {
           placeholder="Password"
         />
       </label>
-      <button className="login-form__or-button">Or Register</button>
     </ModalWithForm>
   );
 };

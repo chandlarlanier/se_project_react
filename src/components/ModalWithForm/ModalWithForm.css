@@ -21,7 +21,8 @@
 .form__content {
   background-color: white;
   width: 496px;
-  height: 436px;
+  /* height: 436px; */
+  height: auto;
   border-radius: 20px;
   position: relative;
 }
@@ -80,6 +81,7 @@
   font-family: "CabinetGrotesk-Bold";
   margin-top: 25px;
   margin-left: 25px;
+  margin-bottom: 25px;
 }
 
 .form__submit-button:enabled:hover {
@@ -90,4 +92,15 @@
 .form__submit-button:disabled {
   background-color: rgba(0, 0, 0, 0.3);
   cursor: default;
+}
+
+.form__or-button {
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "CabinetGrotesk-Bold";
+  cursor: pointer;
+  margin-left: 20px;
 }
