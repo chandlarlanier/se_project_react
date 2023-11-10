@@ -3,8 +3,6 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./Main.css";
-import LoginModal from "../LoginModal/LoginModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
 
 const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);

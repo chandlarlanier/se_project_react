@@ -17,6 +17,7 @@ import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
@@ -165,6 +166,11 @@ const App = () => {
               onClose={handleCloseModal}
               orButton={true}
               orButtonText="Or log in"
+            />
+          )}
+          {activeModal === "edit" && (
+            <EditProfileModal
+              onClose={handleCloseModal}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
