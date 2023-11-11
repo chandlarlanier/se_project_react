@@ -3,6 +3,7 @@ import "./Header.css";
 import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { useState } from "react";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -10,6 +11,8 @@ const currentDate = new Date().toLocaleString("default", {
 });
 
 const Header = ({ onCreateModal }) => {
+const [loggedIn, setLogin] = useState(false);
+
   return (
     <header className="header">
       <div className="header__left">
@@ -20,13 +23,15 @@ const Header = ({ onCreateModal }) => {
       </div>
       <div className="header__right">
         <ToggleSwitch />
-        <button className="header__button" type="text" onClick={onCreateModal}>
+        { loggedIn ? <> <button className="header__button" type="text" onClick={onCreateModal}>
           + Add clothes
         </button>
         <Link to="/profile" className="header__name">
           Terrence Tegegne
         </Link>
-        <img className="header__avatar" src={avatar} alt="User avatar" />
+        <img className="header__avatar" src={avatar} alt="User avatar" /> </> : <> <button className="header__sign-up-button">Sign Up</button>
+        <button className="header__log-in-button">Log in</button> </>}
+        {/* User section end */}
       </div>
     </header>
   );

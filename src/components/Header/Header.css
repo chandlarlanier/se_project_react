@@ -46,3 +46,19 @@
   height: 40px;
   width: 40px;
 }
+
+.header__sign-up-button {
+ background-color: transparent;
+ border: none;
+ font-family: "CabinetGrotesk-Bold";
+ cursor: pointer;
+ font-size: 20px;
+}
+
+.header__log-in-button {
+  background-color: transparent;
+  border: none;
+  font-family: "CabinetGrotesk-Bold";
+  cursor: pointer;
+  font-size: 20px;
+}
