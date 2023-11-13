@@ -18,6 +18,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import { signUp, signIn } from "../../utils/auth";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
@@ -25,6 +26,34 @@ const App = () => {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const handleSignIn = ({ email, password }) => {
+    const user = { email, password };
+
+    signIn(user)
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error(`Error: ${error}`);
+      });
+  };
+
+  const handleSignUp = (userInfo) => {
+    const { email, password } = userInfo;
+
+    signUp(userInfo)
+      .then((res) => {
+        handleSignIn({ email, password });
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error(`Error: ${error}`);
+      });
+  };
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -169,9 +198,7 @@ const App = () => {
             />
           )}
           {activeModal === "edit" && (
-            <EditProfileModal
-              onClose={handleCloseModal}
-            />
+            <EditProfileModal onClose={handleCloseModal} />
           )}
         </CurrentTemperatureUnitContext.Provider>
       </div>

@@ -33,3 +33,5 @@ const signIn = (userData) => {
     return Promise.reject(`Error: ${res.status}`);
   });
 };
+
+export {signIn, signUp};
