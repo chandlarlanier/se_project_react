@@ -1,8 +1,8 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({handleCloseModal, orButton, orButtonText}) => {
+const LoginModal = ({onClose, orButton, orButtonText}) => {
   return (
-    <ModalWithForm title="Log in" buttonText="Log in" onClose={handleCloseModal} orButton={orButton} orButtonText={orButtonText}>
+    <ModalWithForm title="Log in" buttonText="Log in" onClose={onClose} orButton={orButton} orButtonText={orButtonText}>
       <label className="form__input-label">
         Email
         <input

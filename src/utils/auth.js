@@ -34,4 +34,4 @@ const signIn = (userData) => {
   });
 };
 
-export {signIn, signUp};
+export { signIn, signUp };

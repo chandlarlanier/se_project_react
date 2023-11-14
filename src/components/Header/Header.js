@@ -3,15 +3,16 @@ import "./Header.css";
 import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import { useState } from "react";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
   day: "numeric",
 });
 
-const Header = ({ onCreateModal }) => {
-const [loggedIn, setLogin] = useState(false);
+const Header = ({ handleOpenModal }) => {
+  const isLoggedIn = false;
 
   return (
     <header className="header">
@@ -23,15 +24,35 @@ const [loggedIn, setLogin] = useState(false);
       </div>
       <div className="header__right">
         <ToggleSwitch />
-        { loggedIn ? <> <button className="header__button" type="text" onClick={onCreateModal}>
-          + Add clothes
-        </button>
-        <Link to="/profile" className="header__name">
-          Terrence Tegegne
-        </Link>
-        <img className="header__avatar" src={avatar} alt="User avatar" /> </> : <> <button className="header__sign-up-button">Sign Up</button>
-        <button className="header__log-in-button">Log in</button> </>}
-        {/* User section end */}
+        {isLoggedIn ? (
+          <>
+            {" "}
+            <button
+              className="header__button"
+              type="text"
+              onClick={handleOpenModal("create")}
+            >
+              + Add clothes
+            </button>
+            <Link to="/profile" className="header__name">
+              Terrence Tegegne
+            </Link>
+            <img className="header__avatar" src={avatar} alt="User avatar" />{" "}
+          </>
+        ) : (
+          <>
+            {" "}
+            <button
+              className="header__sign-up-button"
+              onClick={() => {
+                handleOpenModal("register");
+              }}
+            >
+              Sign Up
+            </button>
+            <button className="header__log-in-button" onClick={() => {handleOpenModal('login')}}>Log in</button>{" "}
+          </>
+        )}
       </div>
     </header>
   );
