@@ -1,11 +1,11 @@
 import ItemCard from "../ItemCard/ItemCard";
 
-const ClothesSection = ({onSelectCard, onCreateModal, clothingItems}) => {
+const ClothesSection = ({onSelectCard, handleOpenModal, clothingItems}) => {
   return (
     <div className="profile__main">
       <div className="profile__header">
         <h2 className="profile__items-heading">Your Items</h2>
-        <button className="profile__add-button" onClick={onCreateModal}>
+        <button className="profile__add-button" onClick={()=>{handleOpenModal('create')}}>
           + Add New
         </button>
       </div>

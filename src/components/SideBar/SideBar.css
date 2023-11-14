@@ -1,0 +1,50 @@
+/* <div className="profile__side-bar">
+      <div className='profile__info'>
+        <img className="profile__avatar" src={avatar} alt="User avatar" />
+        <p className="profile__name">Terrence Tegegne</p>
+      </div>
+      <div className='profile__buttons'>
+        <button className="edit-profile-button" onClick={() => {handleOpenModal('edit')}}>Change profile data</button>
+        <button className="sign-out-button">Sign out</button>
+      </div>
+    </div> */
+
+.profile__side-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__info {
+  display: flex;
+  gap: 10px;
+}
+
+.profile__name {
+  font-size: 20px;
+}
+
+.profile__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.edit-profile-button {
+  background-color: transparent;
+  border: none;
+  font-family: "CabinetGrotesk-Bold";
+  width: min-content;
+  text-wrap: nowrap;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.log-out-button {
+  background-color: transparent;
+  border: none;
+  font-family: "CabinetGrotesk-Bold";
+  width: min-content;
+  text-wrap: nowrap;
+  cursor: pointer;
+  font-size: 20px;
+}

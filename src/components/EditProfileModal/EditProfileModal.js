@@ -1,11 +1,11 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const EditProfileModal = ({ handleCloseModal }) => {
+const EditProfileModal = ({ onClose }) => {
   return (
     <ModalWithForm
       title="Change profile data"
       buttonText="Save changes"
-      onClose={handleCloseModal}
+      onClose={onClose}
     >
       <label className="form__input-label">
         Name

@@ -2,11 +2,13 @@ import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
-const Profile = ({ onSelectCard, onCreateModal, clothingItems }) => {
+const Profile = ({ onSelectCard, handleOpenModal, clothingItems }) => {
   return (
     <div className="profile__container">
-      <SideBar />
-      <ClothesSection onSelectCard={onSelectCard} onCreateModal={onCreateModal} clothingItems={clothingItems}/>
+      <SideBar handleOpenModal={handleOpenModal}/>
+
+      {/* On create modal needs to be changed to handle open modal? on open modal? */}
+      <ClothesSection onSelectCard={onSelectCard} handleOpenModal={handleOpenModal} clothingItems={clothingItems}/>
     </div>
   );
 };

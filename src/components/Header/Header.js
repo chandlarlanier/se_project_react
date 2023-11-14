@@ -12,7 +12,7 @@ const currentDate = new Date().toLocaleString("default", {
 });
 
 const Header = ({ handleOpenModal }) => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <header className="header">
@@ -30,7 +30,7 @@ const Header = ({ handleOpenModal }) => {
             <button
               className="header__button"
               type="text"
-              onClick={handleOpenModal("create")}
+              onClick={()=> {handleOpenModal("create")}}
             >
               + Add clothes
             </button>
