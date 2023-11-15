@@ -2,26 +2,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0 20px; */
-  
   font-size: 20px;
   margin-top: 30px;
   margin-bottom: 30px;
   font-family: "CabinetGrotesk-Bold";
-  /* max-width: 1360px; */
 }
 
 .header__left {
   display: flex;
   gap: 20px;
   align-items: center;
+  width: min-content;
+  text-wrap: nowrap;
 }
 
 .header__logo {
   position: relative;
   width: 89px;
   height: 40px;
-  bottom: 3px;
+}
+
+.header__date {
+  margin-bottom: 2px;
 }
 
 .header__right {

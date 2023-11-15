@@ -12,7 +12,7 @@ const currentDate = new Date().toLocaleString("default", {
 });
 
 const Header = ({ handleOpenModal }) => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <header className="header">

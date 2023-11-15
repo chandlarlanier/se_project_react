@@ -10,7 +10,8 @@ const ModalWithForm = ({
   isOpen,
   onSubmit,
   orButton,
-  orButtonText
+  orButtonText,
+  handleOrButton
 }) => {
   return (
     <div className="form__modal">
@@ -28,7 +29,7 @@ const ModalWithForm = ({
           <button className="form__submit-button" type="submit">
             {buttonText}
           </button>
-          {{orButton} ? <button className="form__or-button">{orButtonText}</button> : null}
+          {{orButton} ? <button className="form__or-button" onClick={handleOrButton}>{orButtonText}</button> : null}
         </form>
       </div>
     </div>

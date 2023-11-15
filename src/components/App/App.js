@@ -190,6 +190,7 @@ const App = () => {
                   onClose={handleCloseModal}
                   orButton={true}
                   orButtonText="Or register"
+                  handleOrButton={()=>{handleOpenModal('register')}}
                 />
               )}
               {activeModal === "register" && (
@@ -197,6 +198,9 @@ const App = () => {
                   onClose={handleCloseModal}
                   orButton={true}
                   orButtonText="Or log in"
+                  handleOrButton={()=> {
+                    handleOpenModal('login');
+                  }}
                 />
               )}
               {activeModal === "edit" && (

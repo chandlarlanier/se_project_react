@@ -1,8 +1,8 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({onClose, orButton, orButtonText}) => {
+const RegisterModal = ({onClose, orButton, orButtonText, handleOrButton}) => {
     return (
-        <ModalWithForm title="Sign up" buttonText="Next" onClose={onClose} orButton={orButton} orButtonText={orButtonText}>
+        <ModalWithForm title="Sign up" buttonText="Next" onClose={onClose} orButton={orButton} orButtonText={orButtonText} handleOrButton={handleOrButton}>
       <label className="form__input-label">
         Email*
         <input
