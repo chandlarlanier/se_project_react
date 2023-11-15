@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/logo.svg";
-import avatar from "../../images/avatar.svg";
+// import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
   day: "numeric",
 });
 
-const Header = ({ handleOpenModal }) => {
-  const isLoggedIn = false;
+const Header = ({ handleOpenModal, isLoggedIn }) => {
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -30,14 +30,16 @@ const Header = ({ handleOpenModal }) => {
             <button
               className="header__button"
               type="text"
-              onClick={()=> {handleOpenModal("create")}}
+              onClick={() => {
+                handleOpenModal("create");
+              }}
             >
               + Add clothes
             </button>
             <Link to="/profile" className="header__name">
-              Terrence Tegegne
+              {currentUser.name}
             </Link>
-            <img className="header__avatar" src={avatar} alt="User avatar" />{" "}
+            <img className="header__avatar" src={currentUser.avatar} alt="User avatar" />{" "}
           </>
         ) : (
           <>
@@ -50,7 +52,14 @@ const Header = ({ handleOpenModal }) => {
             >
               Sign Up
             </button>
-            <button className="header__log-in-button" onClick={() => {handleOpenModal('login')}}>Log in</button>{" "}
+            <button
+              className="header__log-in-button"
+              onClick={() => {
+                handleOpenModal("login");
+              }}
+            >
+              Log in
+            </button>{" "}
           </>
         )}
       </div>

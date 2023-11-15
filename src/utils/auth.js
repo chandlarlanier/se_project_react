@@ -34,4 +34,19 @@ const signIn = (userData) => {
   });
 };
 
-export { signIn, signUp };
+const checkToken = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  })
+};
+
+export { signIn, signUp, checkToken };
