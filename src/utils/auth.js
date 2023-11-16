@@ -17,10 +17,8 @@ const signUp = (newUserData) => {
   });
 };
 
-const signIn = (userData) => {
-  const { email, password } = userData;
-
-  return requestAnimationFrame(`${baseUrl}/signin`, {
+const signIn = ({email, password}) => {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +37,7 @@ const checkToken = (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     },
   }).then((res) => {
     if (res.ok) {

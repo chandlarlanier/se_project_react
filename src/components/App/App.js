@@ -22,7 +22,6 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { signUp, signIn, checkToken } from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
-
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -33,15 +32,19 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleSignIn = ({ email, password }) => {
-    const user = { email, password };
-
-    signIn(user)
+    console.log({ email, password });
+    signIn({ email, password })
       .then((res) => {
         console.log(res);
         localStorage.setItem("jwt", res.token);
         checkToken(res.token).then((res) => {
           console.log(res);
-          setCurrentUser(res.data);
+          setCurrentUser({
+            name: res.name,
+            avatar: res.avatar,
+            _id: res._id,
+            email: res.email,
+          });
           setIsLoggedIn(true);
         });
         handleCloseModal();
@@ -56,8 +59,11 @@ const App = () => {
 
     signUp(userInfo)
       .then((res) => {
-        handleSignIn({ email, password });
+        console.log(`Signup res: ${res}`);
         handleCloseModal();
+        console.log(currentUser);
+        console.log(isLoggedIn);
+        handleSignIn({ email, password });
       })
       .catch((error) => {
         console.error(`Error: ${error}`);
@@ -71,7 +77,7 @@ const App = () => {
       checkToken(jwt)
         .then((res) => {
           console.log(res);
-          setCurrentUser(res.data);
+          setCurrentUser(res);
           setIsLoggedIn(true);
         })
         .catch((error) => {
@@ -164,6 +170,7 @@ const App = () => {
     };
   }, [activeModal]);
 
+  console.log(currentUser);
   return (
     <div className="page">
       <div className="page__container">
@@ -171,7 +178,7 @@ const App = () => {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <CurrentUserContext.Provider value={{ currentUser }}>
-            <Header handleOpenModal={handleOpenModal} isLoggedIn={isLoggedIn}/>
+            <Header handleOpenModal={handleOpenModal} isLoggedIn={isLoggedIn} />
             <Switch>
               <Route exact path="/">
                 <Main
@@ -180,14 +187,12 @@ const App = () => {
                   clothingItems={clothingItems}
                 />
               </Route>
-              <ProtectedRoute path="/profile">
-                <Route path="/profile">
-                  <Profile
-                    onSelectCard={handleSelectedCard}
-                    handleOpenModal={handleOpenModal}
-                    clothingItems={clothingItems}
-                  />
-                </Route>
+              <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
+                <Profile
+                  onSelectCard={handleSelectedCard}
+                  handleOpenModal={handleOpenModal}
+                  clothingItems={clothingItems}
+                />
               </ProtectedRoute>
             </Switch>
             <Footer />
@@ -215,6 +220,7 @@ const App = () => {
               <LoginModal
                 onClose={handleCloseModal}
                 orButton={true}
+                handleSignIn={handleSignIn}
                 orButtonText="Or register"
                 handleOrButton={() => {
                   handleOpenModal("register");
@@ -223,6 +229,7 @@ const App = () => {
             )}
             {activeModal === "register" && (
               <RegisterModal
+                handleSignUp={handleSignUp}
                 onClose={handleCloseModal}
                 orButton={true}
                 orButtonText="Or log in"

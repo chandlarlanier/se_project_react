@@ -25,8 +25,7 @@ const Header = ({ handleOpenModal, isLoggedIn }) => {
       <div className="header__right">
         <ToggleSwitch />
         {isLoggedIn ? (
-          <>
-            {" "}
+          <div>
             <button
               className="header__button"
               type="text"
@@ -39,11 +38,14 @@ const Header = ({ handleOpenModal, isLoggedIn }) => {
             <Link to="/profile" className="header__name">
               {currentUser.name}
             </Link>
-            <img className="header__avatar" src={currentUser.avatar} alt="User avatar" />{" "}
-          </>
+            <img
+              className="header__avatar"
+              src={currentUser.avatar}
+              alt="User avatar"
+            />
+          </div>
         ) : (
-          <>
-            {" "}
+          <div>
             <button
               className="header__sign-up-button"
               onClick={() => {
@@ -59,8 +61,8 @@ const Header = ({ handleOpenModal, isLoggedIn }) => {
               }}
             >
               Log in
-            </button>{" "}
-          </>
+            </button>
+          </div>
         )}
       </div>
     </header>
