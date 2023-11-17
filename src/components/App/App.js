@@ -19,7 +19,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { signUp, signIn, checkToken } from "../../utils/auth";
+import { signUp, signIn, updateProfile, checkToken } from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 const App = () => {
@@ -50,7 +50,7 @@ const App = () => {
         handleCloseModal();
       })
       .catch((error) => {
-        console.error(`Error: ${error}`);
+        console.error(error);
       });
   };
 
@@ -66,8 +66,17 @@ const App = () => {
         handleSignIn({ email, password });
       })
       .catch((error) => {
-        console.error(`Error: ${error}`);
+        console.error(error);
       });
+  };
+
+  const handleUpdateProfile = (updatedUserInfo) => {
+    updateProfile(updatedUserInfo, localStorage.getItem('jwt')).then((res)=> {
+      setCurrentUser(res);
+      handleCloseModal();
+    }).catch((error)=> {
+      console.error(error);
+    })
   };
 
   const handleToken = () => {
@@ -239,7 +248,7 @@ const App = () => {
               />
             )}
             {activeModal === "edit" && (
-              <EditProfileModal onClose={handleCloseModal} />
+              <EditProfileModal onClose={handleCloseModal} handleUpdateProfile={handleUpdateProfile}/>
             )}
           </CurrentUserContext.Provider>
         </CurrentTemperatureUnitContext.Provider>

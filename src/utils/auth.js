@@ -17,13 +17,31 @@ const signUp = (newUserData) => {
   });
 };
 
-const signIn = ({email, password}) => {
+const signIn = ({ email, password }) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  });
+};
+
+const updateProfile = (updatedInfo, token) => {
+  const { name, avatar } = updatedInfo;
+
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
   }).then((res) => {
     if (res.ok) {
       return res.json();
@@ -44,7 +62,7 @@ const checkToken = (token) => {
       return res.json();
     }
     return Promise.reject(`Error: ${res.status}`);
-  })
+  });
 };
 
-export { signIn, signUp, checkToken };
+export { signIn, signUp, updateProfile, checkToken };
