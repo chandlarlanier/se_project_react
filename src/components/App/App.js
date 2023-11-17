@@ -6,6 +6,8 @@ import {
   getClothingItems,
   addClothingItem,
   deleteClothingItem,
+  likeClothingItem,
+  unlikeClothingItem,
 } from "../../utils/Api";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -73,26 +75,66 @@ const App = () => {
   const handleSignOut = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
-    localStorage.removeItem('jwt');
-  }
+    localStorage.removeItem("jwt");
+  };
 
   const handleUpdateProfile = (updatedUserInfo) => {
-    updateProfile(updatedUserInfo, localStorage.getItem('jwt')).then((res)=> {
-      setCurrentUser(res);
-      handleCloseModal();
-    }).catch((error)=> {
-      console.error(error);
-    })
+    updateProfile(updatedUserInfo, localStorage.getItem("jwt"))
+      .then((res) => {
+        setCurrentUser(res);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleAddItem = (cardData) => {
-    addClothingItem(cardData, localStorage.getItem('jwt')).then((res)=> {
-      setClothingItems([res, ...clothingItems]);
-      handleCloseModal();
-    }).catch((error) => {
-      console.error(error);
-    })
-  }
+    addClothingItem(cardData, localStorage.getItem("jwt"))
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleLikeButton = (cardId, isLiked) => {
+    if (!isLiked) {
+      likeClothingItem(cardId, localStorage.getItem("jwt"))
+        .then((res) => {
+          setClothingItems(
+            clothingItems.map((item) => {
+              if (item._id == cardId) {
+                return res;
+              } else {
+                return item;
+              }
+            })
+          );
+          })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      unlikeClothingItem(cardId, localStorage.getItem("jwt"))
+        .then((res) => {
+          setClothingItems(
+            clothingItems.map((item) => {
+              if (item._id == cardId) {
+                return res;
+              } else {
+                return item;
+              }
+            })
+          );
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
 
   const handleToken = () => {
     const jwt = localStorage.getItem("jwt");
@@ -100,7 +142,6 @@ const App = () => {
     if (jwt) {
       checkToken(jwt)
         .then((res) => {
-          console.log(res);
           setCurrentUser(res);
           setIsLoggedIn(true);
         })
@@ -179,7 +220,6 @@ const App = () => {
     };
   }, [activeModal]);
 
-  console.log(currentUser);
   return (
     <div className="page">
       <div className="page__container">
@@ -191,13 +231,17 @@ const App = () => {
             <Switch>
               <Route exact path="/">
                 <Main
+                  handleLikeButton={handleLikeButton}
                   weatherTemp={temp}
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
+                  isLoggedIn={isLoggedIn}
                 />
               </Route>
               <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
                 <Profile
+                  isLoggedIn={isLoggedIn}
+                  handleLikeButton={handleLikeButton}
                   onSelectCard={handleSelectedCard}
                   handleOpenModal={handleOpenModal}
                   clothingItems={clothingItems}
@@ -249,7 +293,10 @@ const App = () => {
               />
             )}
             {activeModal === "edit" && (
-              <EditProfileModal onClose={handleCloseModal} handleUpdateProfile={handleUpdateProfile}/>
+              <EditProfileModal
+                onClose={handleCloseModal}
+                handleUpdateProfile={handleUpdateProfile}
+              />
             )}
           </CurrentUserContext.Provider>
         </CurrentTemperatureUnitContext.Provider>

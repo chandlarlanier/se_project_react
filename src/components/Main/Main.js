@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./Main.css";
 
-const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
+const Main = ({ weatherTemp, onSelectCard, clothingItems, handleLikeButton, isLoggedIn }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
@@ -20,8 +20,10 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
   }, [weatherTemp]);
 
   const filteredCards = clothingItems.filter((item) => {
-    return item.weather.toLowerCase() == weatherType;
+    return item.weather?.toLowerCase() == weatherType;
   });
+
+  console.log(clothingItems);
 
   return (
     <main className="main">
@@ -36,6 +38,8 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
                   item={item}
                   onSelectCard={onSelectCard}
                   key={item._id}
+                  handleLikeButton={handleLikeButton}
+                  isLoggedIn={isLoggedIn}
                 />
               );
             })}

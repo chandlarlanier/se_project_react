@@ -38,3 +38,27 @@ export const deleteClothingItem = (cardId) => {
   }).then(checkResponse);
   return deletedClothingItem;
 };
+
+export const likeClothingItem = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      'Content-Type': "application/json",
+      authorization: `Bearer ${token}`
+    }
+  }).then((res) => {
+    console.log(res.json());
+  })
+}
+
+export const unlikeClothingItem = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': "application/json",
+      authorization: `Bearer ${token}`
+    }
+  }).then((res)=> {
+    checkResponse(res);
+  })
+}
