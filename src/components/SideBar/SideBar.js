@@ -3,7 +3,7 @@ import avatar from "../../images/avatar.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const SideBar = ({handleOpenModal}) => {
+const SideBar = ({handleOpenModal, handleSignOut}) => {
   const {currentUser} = useContext(CurrentUserContext); 
   console.log(currentUser);
 
@@ -15,7 +15,7 @@ const SideBar = ({handleOpenModal}) => {
       </div>
       <div className='profile__buttons'>
         <button className="edit-profile-button" onClick={() => {handleOpenModal('edit')}}>Change profile data</button>
-        <button className="log-out-button">Log out</button>
+        <button className="log-out-button" onClick={handleSignOut}>Log out</button>
       </div>
     </div>
   );

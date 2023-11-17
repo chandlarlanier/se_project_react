@@ -70,6 +70,12 @@ const App = () => {
       });
   };
 
+  const handleSignOut = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+    localStorage.removeItem('jwt');
+  }
+
   const handleUpdateProfile = (updatedUserInfo) => {
     updateProfile(updatedUserInfo, localStorage.getItem('jwt')).then((res)=> {
       setCurrentUser(res);
@@ -111,21 +117,6 @@ const App = () => {
   const handleCloseModal = () => {
     setActiveModal("");
   };
-
-  // const onAddItem = (values) => {
-  //   const newItem = {
-  //     name: values.name,
-  //     imageUrl: values.link,
-  //     weather: values.weather,
-  //   };
-
-  //   addClothingItem(newItem)
-  //     .then((newItem) => {
-  //       setClothingItems([newItem, ...clothingItems]);
-  //       handleCloseModal();
-  //     })
-  //     .catch(console.error);
-  // };
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -210,6 +201,7 @@ const App = () => {
                   onSelectCard={handleSelectedCard}
                   handleOpenModal={handleOpenModal}
                   clothingItems={clothingItems}
+                  handleSignOut={handleSignOut}
                 />
               </ProtectedRoute>
             </Switch>
