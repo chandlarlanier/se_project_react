@@ -8,14 +8,14 @@ const SideBar = ({handleOpenModal, handleSignOut}) => {
   console.log(currentUser);
 
   return (
-    <div className="profile__side-bar">
-      <div className='profile__info'>
-        <img className="profile__avatar" src={currentUser.avatar} alt="User avatar" />
-        <p className="profile__name">{currentUser.name}</p>
+    <div className="side-bar">
+      <div className='side-bar__info'>
+        <img className="side-bar__avatar" src={currentUser.avatar} alt="User avatar" />
+        <p className="side-bar__name">{currentUser.name}</p>
       </div>
-      <div className='profile__buttons'>
-        <button className="edit-profile-button" onClick={() => {handleOpenModal('edit')}}>Change profile data</button>
-        <button className="log-out-button" onClick={handleSignOut}>Log out</button>
+      <div className='side-bar__buttons'>
+        <button className="side-bar__edit-profile-button" onClick={() => {handleOpenModal('edit')}}>Change profile data</button>
+        <button className="side-bar__log-out-button" onClick={handleSignOut}>Log out</button>
       </div>
     </div>
   );

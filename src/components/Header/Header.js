@@ -25,7 +25,7 @@ const Header = ({ handleOpenModal, isLoggedIn }) => {
       <div className="header__right">
         <ToggleSwitch />
         {isLoggedIn ? (
-          <div>
+          <div className='header__profile-section'>
             <button
               className="header__button"
               type="text"

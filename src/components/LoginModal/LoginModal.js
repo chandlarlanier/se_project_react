@@ -54,6 +54,7 @@ const LoginModal = ({
           type="password"
           name="password"
           placeholder="Password"
+          onChange={handlePasswordChange}
         />
       </label>
     </ModalWithForm>

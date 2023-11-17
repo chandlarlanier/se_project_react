@@ -6,10 +6,25 @@
   margin-top: 30px;
 }
 
+.card-items__container {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  max-width: 1360px;
+}
+
 .card-items {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
   margin-top: 30px;
+  background-color: blue;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media (max-width: 740px) {
+  .card-items {
+    justify-content: center;
+  }
 }
