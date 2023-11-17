@@ -79,6 +79,15 @@ const App = () => {
     })
   };
 
+  const handleAddItem = (cardData) => {
+    addClothingItem(cardData, localStorage.getItem('jwt')).then((res)=> {
+      setClothingItems([res, ...clothingItems]);
+      handleCloseModal();
+    }).catch((error) => {
+      console.error(error);
+    })
+  }
+
   const handleToken = () => {
     const jwt = localStorage.getItem("jwt");
 
@@ -103,20 +112,20 @@ const App = () => {
     setActiveModal("");
   };
 
-  const onAddItem = (values) => {
-    const newItem = {
-      name: values.name,
-      imageUrl: values.link,
-      weather: values.weather,
-    };
+  // const onAddItem = (values) => {
+  //   const newItem = {
+  //     name: values.name,
+  //     imageUrl: values.link,
+  //     weather: values.weather,
+  //   };
 
-    addClothingItem(newItem)
-      .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
-        handleCloseModal();
-      })
-      .catch(console.error);
-  };
+  //   addClothingItem(newItem)
+  //     .then((newItem) => {
+  //       setClothingItems([newItem, ...clothingItems]);
+  //       handleCloseModal();
+  //     })
+  //     .catch(console.error);
+  // };
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -158,7 +167,7 @@ const App = () => {
   useEffect(() => {
     getClothingItems()
       .then((items) => {
-        setClothingItems(items);
+        setClothingItems(items.reverse());
       })
       .catch(console.error);
   }, []);
@@ -208,7 +217,7 @@ const App = () => {
             {activeModal === "create" && (
               <AddItemModal
                 onClose={handleCloseModal}
-                onAddItem={onAddItem}
+                onAddItem={handleAddItem}
                 isOpen={activeModal === "create"}
               />
             )}

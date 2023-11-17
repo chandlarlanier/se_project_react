@@ -18,15 +18,15 @@ export const getClothingItems = () => {
   return clothingItems;
 };
 
-export const addClothingItem = (data) => {
-  const newClothingItem = fetch(`${baseUrl}/items`, {
+export const addClothingItem = (cardData, token) => {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
-      "content-type": "application/json",
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(cardData),
   }).then(checkResponse);
-  return newClothingItem;
 };
 
 export const deleteClothingItem = (cardId) => {

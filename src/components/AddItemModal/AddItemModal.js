@@ -7,9 +7,9 @@ const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
     setName(e.target.value);
   };
 
-  const [link, setUrl] = useState("");
-  const handleUrlChange = (e) => {
-    setUrl(e.target.value);
+  const [imageUrl, setImageUrl] = useState("");
+  const handleImageUrlChange = (e) => {
+    setImageUrl(e.target.value);
   };
 
   const [weather, setWeather] = useState("");
@@ -19,7 +19,7 @@ const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link, weather });
+    onAddItem({ name, imageUrl, weather });
   };
 
   return (
@@ -54,8 +54,8 @@ const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
           minLength="1"
           maxLength="1000"
           placeholder="Image URL"
-          value={link}
-          onChange={handleUrlChange}
+          value={imageUrl}
+          onChange={handleImageUrlChange}
         />
       </label>
       <p className="form__radio-button-heading">Select the weather type:</p>
