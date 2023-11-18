@@ -106,14 +106,14 @@ const App = () => {
         .then((res) => {
           setClothingItems(
             clothingItems.map((item) => {
-              if (item._id == cardId) {
+              if (item._id === cardId) {
                 return res;
               } else {
                 return item;
               }
             })
           );
-          })
+        })
         .catch((error) => {
           console.error(error);
         });
@@ -122,7 +122,7 @@ const App = () => {
         .then((res) => {
           setClothingItems(
             clothingItems.map((item) => {
-              if (item._id == cardId) {
+              if (item._id === cardId) {
                 return res;
               } else {
                 return item;
@@ -165,7 +165,7 @@ const App = () => {
   };
 
   const handleConfirmDelete = () => {
-    deleteClothingItem(selectedCard._id)
+    deleteClothingItem(selectedCard._id, localStorage.getItem("jwt"))
       .then(() => {
         const remainingClothingItems = clothingItems.filter((card) => {
           return selectedCard._id !== card._id;
@@ -262,6 +262,9 @@ const App = () => {
                 selectedCard={selectedCard}
                 onClose={handleCloseModal}
                 handleOpenModal={handleOpenModal}
+                openConfirmDelete={()=> {
+                  handleOpenModal('delete');
+                }}
               />
             )}
             {activeModal === "delete" && (

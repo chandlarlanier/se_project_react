@@ -29,14 +29,14 @@ export const addClothingItem = (cardData, token) => {
   }).then(checkResponse);
 };
 
-export const deleteClothingItem = (cardId) => {
-  const deletedClothingItem = fetch(`${baseUrl}/items/${cardId}`, {
+export const deleteClothingItem = (cardId, token) => {
+  return fetch(`${baseUrl}/items/${cardId}`, {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
+      authorization: `Bearer ${token}`
     },
   }).then(checkResponse);
-  return deletedClothingItem;
 };
 
 export const likeClothingItem = (itemId, token) => {

@@ -1,7 +1,14 @@
 import "./ItemModal.css";
 import closeIcon from "../../images/close-icon.svg";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const ItemModal = ({ selectedCard, onClose, onDelete }) => {
+const ItemModal = ({ selectedCard, onClose, openConfirmDelete }) => {
+  const {currentUser} = useContext(CurrentUserContext);
+  const isOwn = currentUser._id == selectedCard.owner;
+  console.log(currentUser);
+  console.log(selectedCard);
+
   return (
     <div className="preview-item__modal">
       <div className="preview-item__content">
@@ -22,9 +29,11 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
           <p className="preview-item__item-weather">
             Weather: {selectedCard.weather}
           </p>
-          <button className="preview-item__delete-button" onClick={onDelete}>
-            Delete item
-          </button>
+          {isOwn ? (
+            <button className="preview-item__delete-button" onClick={openConfirmDelete}>
+              Delete item
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
