@@ -20,11 +20,8 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, handleLikeButton, isLo
   }, [weatherTemp]);
 
   const filteredCards = clothingItems.filter((item) => {
-    console.log(item);
     return item.weather.toLowerCase() === weatherType;
   });
-
-  console.log(clothingItems);
 
   return (
     <main className="main">

@@ -101,39 +101,26 @@ const App = () => {
   };
 
   const handleLikeButton = (cardId, isLiked) => {
-    if (!isLiked) {
-      likeClothingItem(cardId, localStorage.getItem("jwt"))
-        .then((res) => {
-          setClothingItems(
-            clothingItems.map((item) => {
-              if (item._id === cardId) {
-                return res;
-              } else {
-                return item;
-              }
-            })
-          );
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    } else {
-      unlikeClothingItem(cardId, localStorage.getItem("jwt"))
-        .then((res) => {
-          setClothingItems(
-            clothingItems.map((item) => {
-              if (item._id === cardId) {
-                return res;
-              } else {
-                return item;
-              }
-            })
-          );
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+    const jwt = localStorage.getItem("jwt");
+
+    !isLiked
+      ? likeClothingItem(cardId, jwt)
+          .then((likedItem) => {
+            setClothingItems((cards) =>
+              cards.map((item) => {
+          
+                return item._id === cardId ? likedItem : item;
+              })
+            );
+          })
+          .catch((err) => console.log(err))
+      : unlikeClothingItem(cardId, jwt)
+          .then((unlikedItem) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === cardId ? unlikedItem : item))
+            );
+          })
+          .catch((err) => console.log(err));
   };
 
   const handleToken = () => {
@@ -262,8 +249,8 @@ const App = () => {
                 selectedCard={selectedCard}
                 onClose={handleCloseModal}
                 handleOpenModal={handleOpenModal}
-                openConfirmDelete={()=> {
-                  handleOpenModal('delete');
+                openConfirmDelete={() => {
+                  handleOpenModal("delete");
                 }}
               />
             )}

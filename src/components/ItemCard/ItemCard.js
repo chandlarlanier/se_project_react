@@ -3,7 +3,7 @@ import "./ItemCard.css";
 import { useContext } from "react";
 
 const ItemCard = ({ item, onSelectCard, handleLikeButton }) => {
-  const currentUser = useContext(CurrentUserContext);
+  const {currentUser} = useContext(CurrentUserContext);
   const isLiked = item.likes.some((user) => {
     if (currentUser) {
       return user === currentUser._id;
@@ -13,6 +13,7 @@ const ItemCard = ({ item, onSelectCard, handleLikeButton }) => {
   });
 
   const handleClickLike = () => {
+    console.log(isLiked, currentUser, item);
     handleLikeButton(item._id, isLiked);
   };
 

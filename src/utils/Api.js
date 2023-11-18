@@ -47,7 +47,7 @@ export const likeClothingItem = (itemId, token) => {
       authorization: `Bearer ${token}`
     }
   }).then((res) => {
-    console.log(res.json());
+    return checkResponse(res);
   })
 }
 
@@ -59,6 +59,6 @@ export const unlikeClothingItem = (itemId, token) => {
       authorization: `Bearer ${token}`
     }
   }).then((res)=> {
-    checkResponse(res);
+    return checkResponse(res);
   })
 }
