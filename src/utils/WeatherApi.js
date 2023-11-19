@@ -1,11 +1,10 @@
-import { checkResponse } from "./Api";
+import { checkResponse } from "./api";
 
 const apiKey = "3f71e73ce2cd017bc02bfad723f4d270";
 
 // NYC coordinates
 const latitude = 41;
 const longitude = -74;
-
 
 export const getForecastWeather = () => {
   return fetch(
@@ -22,7 +21,7 @@ export const parseWeatherData = (data) => {
       F: `${Math.round(temperature)}°F`,
       C: `${Math.round(((temperature - 32) * 5) / 9)}°C`,
     },
-    weatherType: weatherType
+    weatherType: weatherType,
   };
   return weather;
 };

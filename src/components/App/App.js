@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import { getForecastWeather, parseWeatherData } from "../../utils/WeatherApi";
+import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import {
   getClothingItems,
   addClothingItem,
   deleteClothingItem,
   likeClothingItem,
   unlikeClothingItem,
-} from "../../utils/Api";
+} from "../../utils/api";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
@@ -37,13 +37,10 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleSignIn = ({ email, password }) => {
-    console.log({ email, password });
     signIn({ email, password })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("jwt", res.token);
         checkToken(res.token).then((res) => {
-          console.log(res);
           setCurrentUser({
             name: res.name,
             avatar: res.avatar,
@@ -64,10 +61,7 @@ const App = () => {
 
     signUp(userInfo)
       .then((res) => {
-        console.log(`Signup res: ${res}`);
         handleCloseModal();
-        console.log(currentUser);
-        console.log(isLoggedIn);
         handleSignIn({ email, password });
       })
       .catch((error) => {
@@ -115,14 +109,14 @@ const App = () => {
               })
             );
           })
-          .catch((err) => console.log(err))
+          .catch((err) => console.error(err))
       : unlikeClothingItem(cardId, jwt)
           .then((unlikedItem) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === cardId ? unlikedItem : item))
             );
           })
-          .catch((err) => console.log(err));
+          .catch((error) => console.error(error));
   };
 
   const handleToken = () => {

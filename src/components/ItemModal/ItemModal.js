@@ -6,8 +6,6 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 const ItemModal = ({ selectedCard, onClose, openConfirmDelete }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const isOwn = currentUser._id == selectedCard.owner;
-  console.log(currentUser);
-  console.log(selectedCard);
 
   return (
     <div className="preview-item__modal">

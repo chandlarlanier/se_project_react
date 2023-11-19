@@ -31,7 +31,6 @@ const RegisterModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password, name, avatar });
     handleSignUp({ email, password, name, avatar });
   };
 

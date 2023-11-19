@@ -6,7 +6,7 @@ export const checkResponse = (res) => {
   } else {
     return Promise.reject(`Error: ${res.status}`);
   }
-}
+};
 
 export const getClothingItems = () => {
   const clothingItems = fetch(`${baseUrl}/items`, {
@@ -23,7 +23,7 @@ export const addClothingItem = (cardData, token) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(cardData),
   }).then(checkResponse);
@@ -34,7 +34,7 @@ export const deleteClothingItem = (cardId, token) => {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
-      authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
 };
@@ -43,22 +43,22 @@ export const likeClothingItem = (itemId, token) => {
   return fetch(`${baseUrl}/items/${itemId}/likes`, {
     method: "PUT",
     headers: {
-      'Content-Type': "application/json",
-      authorization: `Bearer ${token}`
-    }
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   }).then((res) => {
     return checkResponse(res);
-  })
-}
+  });
+};
 
 export const unlikeClothingItem = (itemId, token) => {
   return fetch(`${baseUrl}/items/${itemId}/likes`, {
     method: "DELETE",
     headers: {
-      'Content-Type': "application/json",
-      authorization: `Bearer ${token}`
-    }
-  }).then((res)=> {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
     return checkResponse(res);
-  })
-}
+  });
+};

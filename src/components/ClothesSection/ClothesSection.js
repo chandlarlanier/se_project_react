@@ -1,7 +1,12 @@
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-const ClothesSection = ({ onSelectCard, handleOpenModal, clothingItems, handleLikeButton }) => {
+const ClothesSection = ({
+  onSelectCard,
+  handleOpenModal,
+  clothingItems,
+  handleLikeButton,
+}) => {
   return (
     <div className="clothes-section">
       <div className="clothes-section__heading">
@@ -18,7 +23,12 @@ const ClothesSection = ({ onSelectCard, handleOpenModal, clothingItems, handleLi
       <div className="clothes-section__card-items">
         {clothingItems.map((item) => {
           return (
-            <ItemCard item={item} onSelectCard={onSelectCard} key={item._id} handleLikeButton={handleLikeButton}/>
+            <ItemCard
+              item={item}
+              onSelectCard={onSelectCard}
+              key={item._id}
+              handleLikeButton={handleLikeButton}
+            />
           );
         })}
       </div>
