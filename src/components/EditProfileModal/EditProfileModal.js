@@ -18,7 +18,7 @@ const EditProfileModal = ({ onClose, handleUpdateProfile }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleUpdateProfile({name, avatar})
+    handleUpdateProfile({ name, avatar });
   };
 
   return (

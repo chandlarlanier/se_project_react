@@ -4,7 +4,14 @@ import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./Main.css";
 
-const Main = ({ weatherCardUrl, weatherTemp, onSelectCard, clothingItems, handleLikeButton, isLoggedIn }) => {
+const Main = ({
+  weatherCardUrl,
+  weatherTemp,
+  onSelectCard,
+  clothingItems,
+  handleLikeButton,
+  isLoggedIn,
+}) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.[currentTemperatureUnit] || 999;
 
@@ -25,7 +32,7 @@ const Main = ({ weatherCardUrl, weatherTemp, onSelectCard, clothingItems, handle
 
   return (
     <main className="main">
-      <WeatherCard weatherCardUrl={weatherCardUrl} weatherTemp={temp}/>
+      <WeatherCard weatherCardUrl={weatherCardUrl} weatherTemp={temp} />
       <section className="card-section">
         The temperature today is {temp} / You may want to wear:
         <div className="card-items__container">

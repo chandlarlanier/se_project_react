@@ -182,9 +182,10 @@ const App = () => {
 
         const weatherType = parseWeatherData(data).weatherType;
         setWeatherType(weatherType);
-      
-        const isDay = Date.now() > data.sys.sunrise && Date.now() < data.sys.sunset;
-        const weatherImageOption = weatherOptions.filter((item)=> {
+
+        const isDay =
+          Date.now() > data.sys.sunrise && Date.now() < data.sys.sunset;
+        const weatherImageOption = weatherOptions.filter((item) => {
           return item.day == isDay && item.type == weatherType;
         })[0].url;
         setWeatherCardUrl(weatherImageOption);

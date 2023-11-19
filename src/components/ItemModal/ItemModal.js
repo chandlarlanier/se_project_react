@@ -4,7 +4,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, openConfirmDelete }) => {
-  const {currentUser} = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const isOwn = currentUser._id == selectedCard.owner;
   console.log(currentUser);
   console.log(selectedCard);
@@ -30,7 +30,10 @@ const ItemModal = ({ selectedCard, onClose, openConfirmDelete }) => {
             Weather: {selectedCard.weather}
           </p>
           {isOwn ? (
-            <button className="preview-item__delete-button" onClick={openConfirmDelete}>
+            <button
+              className="preview-item__delete-button"
+              onClick={openConfirmDelete}
+            >
               Delete item
             </button>
           ) : null}

@@ -15,25 +15,25 @@ const RegisterModal = ({
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-  }
+  };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-  }
+  };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
-  }
+  };
 
   const handleAvatarChange = (e) => {
     setAvatar(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({email, password, name, avatar});
-    handleSignUp({email, password, name, avatar});
-  }
+    console.log({ email, password, name, avatar });
+    handleSignUp({ email, password, name, avatar });
+  };
 
   return (
     <ModalWithForm

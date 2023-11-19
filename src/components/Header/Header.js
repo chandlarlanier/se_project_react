@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/logo.svg";
-// import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
@@ -25,7 +24,7 @@ const Header = ({ handleOpenModal, isLoggedIn }) => {
       <div className="header__right">
         <ToggleSwitch />
         {isLoggedIn ? (
-          <div className='header__profile-section'>
+          <div className="header__profile-section">
             <button
               className="header__button"
               type="text"

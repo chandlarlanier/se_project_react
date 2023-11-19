@@ -8,22 +8,21 @@ const LoginModal = ({
   handleOrButton,
   handleSignIn,
 }) => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-  }
+  };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSignIn({email, password});
-  }
+    handleSignIn({ email, password });
+  };
 
   return (
     <ModalWithForm
