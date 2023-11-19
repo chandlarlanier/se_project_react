@@ -1,4 +1,4 @@
-import { checkResponse } from "./api";
+import { checkResponse } from "./Api";
 
 const apiKey = "3f71e73ce2cd017bc02bfad723f4d270";
 
