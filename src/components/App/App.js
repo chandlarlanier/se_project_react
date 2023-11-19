@@ -23,12 +23,15 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { signUp, signIn, updateProfile, checkToken } from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
+import { weatherOptions } from "../../utils/constants";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [weatherType, setWeatherType] = useState("");
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [weatherCardUrl, setWeatherCardUrl] = useState("");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -108,7 +111,6 @@ const App = () => {
           .then((likedItem) => {
             setClothingItems((cards) =>
               cards.map((item) => {
-          
                 return item._id === cardId ? likedItem : item;
               })
             );
@@ -175,11 +177,20 @@ const App = () => {
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
-        const temperature = parseWeatherData(data);
+        const temperature = parseWeatherData(data).temperature;
         setTemp(temperature);
+
+        const weatherType = parseWeatherData(data).weatherType;
+        setWeatherType(weatherType);
+      
+        const isDay = Date.now() > data.sys.sunrise && Date.now() < data.sys.sunset;
+        const weatherImageOption = weatherOptions.filter((item)=> {
+          return item.day == isDay && item.type == weatherType;
+        })[0].url;
+        setWeatherCardUrl(weatherImageOption);
       })
-      .catch((err) => {
-        console.error(err);
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
@@ -223,6 +234,8 @@ const App = () => {
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
                   isLoggedIn={isLoggedIn}
+                  weatherType={weatherType}
+                  weatherCardUrl={weatherCardUrl}
                 />
               </Route>
               <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>

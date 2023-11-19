@@ -4,12 +4,12 @@ import ItemCard from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./Main.css";
 
-const Main = ({ weatherTemp, onSelectCard, clothingItems, handleLikeButton, isLoggedIn }) => {
+const Main = ({ weatherCardUrl, weatherTemp, onSelectCard, clothingItems, handleLikeButton, isLoggedIn }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+  const temp = weatherTemp?.[currentTemperatureUnit] || 999;
 
-  const weatherType = useMemo(() => {
-    const fahrenheitTemp = parseInt(weatherTemp?.temperature?.F);
+  const weatherHeatType = useMemo(() => {
+    const fahrenheitTemp = parseInt(weatherTemp?.F);
     if (fahrenheitTemp >= 86) {
       return "hot";
     } else if (fahrenheitTemp >= 66 && fahrenheitTemp <= 85) {
@@ -20,12 +20,12 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, handleLikeButton, isLo
   }, [weatherTemp]);
 
   const filteredCards = clothingItems.filter((item) => {
-    return item.weather.toLowerCase() === weatherType;
+    return item.weather.toLowerCase() === weatherHeatType;
   });
 
   return (
     <main className="main">
-      <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
+      <WeatherCard weatherCardUrl={weatherCardUrl} weatherTemp={temp}/>
       <section className="card-section">
         The temperature today is {temp} / You may want to wear:
         <div className="card-items__container">
