@@ -2,11 +2,12 @@
 
 ## About the project
 
-The WTWR App is a weather-based clothing recommendation application that helps users decide what to wear based on the current weather conditions. It fetches weather data from the OpenWeather API and dynamically renders the weather information. Additionally, the app allows users to submit and manage their clothing items, providing personalized clothing recommendations based on the weather data received.
+This is the front-end for the What to Wear (WTWR) app, which is a weather-based
+clothing recommendation application that helps users decide what to wear based on the current weather conditions. The back end can be found at [this link](https://github.com/chandlarlanier/se_project_express). The application fetches weather data from the OpenWeather API and dynamically renders the weather information on the main page. Additionally, the app allows users to create their own accounts, and submit and manage their clothing items, providing personalized clothing recommendations based on the weather data received.
 
 ## Objective
 
-- This project primarily focuses on mastering the basic concepts of React and React Router, such as creating components, managing state, handling data fetched from an external API, and allowing navigation between displays.
+- This project primarily focuses on the basic concepts of React and React Router, such as creating components, managing state, handling data fetched from an external API, and allowing navigation between displays.
 
 ## Features
 
