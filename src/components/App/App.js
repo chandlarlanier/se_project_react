@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
+import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi.js";
 import {
   getClothingItems,
   addClothingItem,
