@@ -24,7 +24,7 @@ const ClothesSection = ({
         </button>
       </div>
       <div className="clothes-section__card-items">
-        {clothingItems.filter((clothingItem) => clothingItem.owner === currentUser._id).map((item) => {
+        {clothingItems.map((item) => {
           return (
             <ItemCard
               item={item}
