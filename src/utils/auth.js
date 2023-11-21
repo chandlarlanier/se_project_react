@@ -1,3 +1,4 @@
+import { checkResponse } from "./Api";
 const baseUrl = "http://localhost:3001";
 
 const signUp = (newUserData) => {
@@ -9,12 +10,7 @@ const signUp = (newUserData) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 const signIn = ({ email, password }) => {
@@ -24,12 +20,7 @@ const signIn = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 const updateProfile = (updatedInfo, token) => {
@@ -42,12 +33,7 @@ const updateProfile = (updatedInfo, token) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 const checkToken = (token) => {
@@ -57,12 +43,7 @@ const checkToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(checkResponse);
 };
 
 export { signIn, signUp, updateProfile, checkToken };

@@ -53,6 +53,7 @@ const RegisterModal = ({
           name="email"
           placeholder="Email"
           onChange={handleEmailChange}
+          value={email}
         />
       </label>
       <label className="form__input-label">
@@ -64,6 +65,7 @@ const RegisterModal = ({
           name="password"
           placeholder="Password"
           onChange={handlePasswordChange}
+          value={password}
         />
       </label>
       <label className="form__input-label">
@@ -75,6 +77,7 @@ const RegisterModal = ({
           name="name"
           placeholder="Name"
           onChange={handleNameChange}
+          value={name}
         />
       </label>
       <label className="form__input-label">
@@ -86,6 +89,7 @@ const RegisterModal = ({
           name="url"
           placeholder="Avatar URL"
           onChange={handleAvatarChange}
+          value={avatar}
         />
       </label>
     </ModalWithForm>

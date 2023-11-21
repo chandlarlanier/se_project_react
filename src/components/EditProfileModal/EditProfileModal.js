@@ -6,12 +6,11 @@ const EditProfileModal = ({ onClose, handleUpdateProfile }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   const [name, setName] = useState(currentUser.name);
-  const [avatar, setAvatar] = useState(currentUser.avatar);
-
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
 
+  const [avatar, setAvatar] = useState(currentUser.avatar);
   const handleAvatarChange = (e) => {
     setAvatar(e.target.value);
   };
@@ -35,8 +34,8 @@ const EditProfileModal = ({ onClose, handleUpdateProfile }) => {
           className="form__text-input"
           type="text"
           name="name"
-          placeholder="Name"
           onChange={handleNameChange}
+          value={name}
         />
       </label>
       <label className="form__input-label">
@@ -45,9 +44,10 @@ const EditProfileModal = ({ onClose, handleUpdateProfile }) => {
           required
           className="form__text-input"
           type="url"
-          name="url"
+          name="avatar"
           placeholder="URL"
           onChange={handleAvatarChange}
+          value={avatar}
         />
       </label>
     </ModalWithForm>

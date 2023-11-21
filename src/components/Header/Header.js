@@ -10,7 +10,7 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-const Header = ({ handleOpenModal, isLoggedIn }) => {
+const Header = ({ handleOpenModal, isLoggedIn, city }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -19,7 +19,7 @@ const Header = ({ handleOpenModal, isLoggedIn }) => {
         <Link to="/">
           <img className="header__logo" src={logo} alt="WTWR logo" />
         </Link>
-        <div className="header__date">{currentDate}, New York</div>
+        <div className="header__date">{currentDate}, {city}</div>
       </div>
       <div className="header__right">
         <ToggleSwitch />

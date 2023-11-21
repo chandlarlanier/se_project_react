@@ -11,7 +11,7 @@ const SideBar = ({ handleOpenModal, handleSignOut }) => {
         <img
           className="side-bar__avatar"
           src={currentUser.avatar}
-          alt="User avatar"
+          alt={currentUser.name}
         />
         <p className="side-bar__name">{currentUser.name}</p>
       </div>

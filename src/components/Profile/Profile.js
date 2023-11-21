@@ -13,9 +13,9 @@ const Profile = ({
   handleLikeButton,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  const ownerClothingItems = clothingItems.filter((item) => {
-    return item.owner === currentUser._id;
-  });
+  // const ownerClothingItems = clothingItems.filter((item) => {
+  //   return item.owner == currentUser._id;
+  // });
 
   return (
     <div className="profile__container">
@@ -26,7 +26,7 @@ const Profile = ({
       <ClothesSection
         onSelectCard={onSelectCard}
         handleOpenModal={handleOpenModal}
-        clothingItems={ownerClothingItems}
+        clothingItems={clothingItems}
         handleLikeButton={handleLikeButton}
         isLoggedIn={isLoggedIn}
       />

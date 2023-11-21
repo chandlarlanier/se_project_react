@@ -9,12 +9,11 @@ const LoginModal = ({
   handleSignIn,
 }) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
+  const [password, setPassword] = useState("");
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -43,6 +42,7 @@ const LoginModal = ({
           name="email"
           placeholder="Email"
           onChange={handleEmailChange}
+          value={email}
         />
       </label>
       <label className="form__input-label">
@@ -54,6 +54,7 @@ const LoginModal = ({
           name="password"
           placeholder="Password"
           onChange={handlePasswordChange}
+          value={password}
         />
       </label>
     </ModalWithForm>

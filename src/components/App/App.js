@@ -35,6 +35,7 @@ const App = () => {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [weatherCardUrl, setWeatherCardUrl] = useState("");
+  const [city, setCity] = useState("");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -43,20 +44,12 @@ const App = () => {
     signIn({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        checkToken(res.token).then((res) => {
-          setCurrentUser({
-            name: res.name,
-            avatar: res.avatar,
-            _id: res._id,
-            email: res.email,
-          });
-          setIsLoggedIn(true);
-        });
+      })
+      .then(() => {
+        handleToken();
         handleCloseModal();
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   const handleSignUp = (userInfo) => {
@@ -67,9 +60,7 @@ const App = () => {
         handleCloseModal();
         handleSignIn({ email, password });
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   const handleSignOut = () => {
@@ -81,12 +72,10 @@ const App = () => {
   const handleUpdateProfile = (updatedUserInfo) => {
     updateProfile(updatedUserInfo, localStorage.getItem("jwt"))
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser({name: res.name, avatar: res.avatar, _id: currentUser._id, email: currentUser.email});
         handleCloseModal();
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   const handleAddItem = (cardData) => {
@@ -95,9 +84,7 @@ const App = () => {
         setClothingItems([res, ...clothingItems]);
         handleCloseModal();
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   const handleLikeButton = (cardId, isLiked) => {
@@ -112,14 +99,14 @@ const App = () => {
               })
             );
           })
-          .catch((err) => console.error(err))
+          .catch(console.error)
       : unlikeClothingItem(cardId, jwt)
           .then((unlikedItem) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === cardId ? unlikedItem : item))
             );
           })
-          .catch((error) => console.error(error));
+          .catch(console.error);
   };
 
   const handleToken = () => {
@@ -131,9 +118,7 @@ const App = () => {
           setCurrentUser(res);
           setIsLoggedIn(true);
         })
-        .catch((error) => {
-          console.error(error);
-        });
+        .catch(console.error);
     }
   };
 
@@ -180,6 +165,9 @@ const App = () => {
         const weatherType = parseWeatherData(data).weatherType;
         setWeatherType(weatherType);
 
+        const placeName = parseWeatherData(data).placeName;
+        setCity(placeName);
+
         const isDay =
           Date.now() > data.sys.sunrise && Date.now() < data.sys.sunset;
         const weatherImageOption = weatherOptions.filter((item) => {
@@ -187,9 +175,7 @@ const App = () => {
         })[0].url;
         setWeatherCardUrl(weatherImageOption);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error)
   }, []);
 
   useEffect(() => {
@@ -223,7 +209,7 @@ const App = () => {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <CurrentUserContext.Provider value={{ currentUser }}>
-            <Header handleOpenModal={handleOpenModal} isLoggedIn={isLoggedIn} />
+            <Header handleOpenModal={handleOpenModal} isLoggedIn={isLoggedIn} city={city}/>
             <Switch>
               <Route exact path="/">
                 <Main

@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({
   onSelectCard,
@@ -7,6 +9,7 @@ const ClothesSection = ({
   clothingItems,
   handleLikeButton,
 }) => {
+  const {currentUser} = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
       <div className="clothes-section__heading">
@@ -21,7 +24,7 @@ const ClothesSection = ({
         </button>
       </div>
       <div className="clothes-section__card-items">
-        {clothingItems.map((item) => {
+        {clothingItems.filter((clothingItem) => clothingItem.owner === currentUser._id).map((item) => {
           return (
             <ItemCard
               item={item}
